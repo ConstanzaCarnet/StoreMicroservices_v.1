@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zRhaAgy1Asw=",
+  "success": true,
+  "projectFilePath": "E:\\Proyects\\C#\\Microservices_v.1\\OrderService\\OrderService\\OrderService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\carne\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.11\\microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512",
+    "C:\\Users\\carne\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
