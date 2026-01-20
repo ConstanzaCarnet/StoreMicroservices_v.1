@@ -1,0 +1,50 @@
+GUIA: https://www.youtube.com/watch?v=3ftI26leOzA
+
+Comando para crear la aplicacion del microservicio particular:
+dotnet new webapi -n NombreDelMicroservicio
+Paquetes instalados para Entity Framework Core con SQL Server:
+dotnet add package Microsoft.EntityFrameworkCore.Desing
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+---------------
+tips---
+docker-compose, algunos comandos:
+docker-compose up -d --build  (levanta los servicios en segundo plano y construye las imagenes)
+docker-compose down  (detiene y elimina los contenedores, redes y volúmenes creados por up)
+docker-compose ps  (muestra el estado de los contenedores)
+docker-compose logs -f  (muestra los logs en tiempo real de los contenedores)
+docker-compose stop  (detiene los contenedores sin eliminarlos)
+docker-compose start  (inicia los contenedores detenidos)
+docker-compose restart  (reinicia los contenedores)
+docker-compose exec nombre_servicio comando  (ejecuta un comando dentro de un contenedor en ejecución)
+docker-compose build  (construye o reconstruye los servicios)
+docker-compose pull  (descarga las últimas versiones de las imágenes definidas en el archivo docker-compose.yml)
+docker-compose rm  (elimina los contenedores detenidos)
+docker-compose config  (valida y muestra la configuración del archivo docker-compose.yml)
+docker-compose version  (muestra la versión de docker-compose instalada)
+
+
+***En caso de ingresar a un contenedor en ejecución para hacer pruebas o configuraciones adicionales:
+docker exec -it nombre_contenedor bash
+****en caso de querer ver base de datos en los contendore y querer usar sqlcmd
+docker exec -it nombre_contenedor /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'TuPassword'
+En el caso que que de error por SSL, puede hacerse necesario agregar el parametro -N -C al final del comando sqlcmd
+por ejemplo:
+docker exec -it nombre_contenedor /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'TuPassword' -N -C
+C:\WINDOWS\system32>docker exec -it order-db /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Your_password123 -C
+---------------
+para crear una base de datos:
+CREATE DATABASE NombreBaseDatos;
+GO
+para ingresar en la base de datos creada:
+USE NombreBaseDatos;
+GO
+para eliminar la base de datos creada:
+DROP DATABASE NombreBaseDatos;
+GO
+---------------
+Comando para crear la aplicacion del microservicio de API Gateway con Ocelot:
+dotnet new web -n NombreDelMicroservicioGateway
+Paquete instalado para Ocelot:
+dotnet add package Ocelot
+---------------

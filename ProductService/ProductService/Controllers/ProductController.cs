@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProductService.Data;
 using ProductService.Models;
+using ProductService.DTOs;
 
 namespace ProductService.Controllers
 {

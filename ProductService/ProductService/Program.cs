@@ -34,6 +34,7 @@ app.UseRequestLocalization();
     dbContext.Database.Migrate();
 }*/
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -44,5 +45,24 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+//Esto me permitirá realizar las migraciones pendientes al iniciar la aplicacion, con reintentos en caso de fallo
+// evitando que la aplicacion falle si la base de datos no está lista al momento de iniciar
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ProductContext>();
 
+    var retries = 10;
+    while (true)
+    {
+        try
+        {
+            dbContext.Database.Migrate();
+            break;
+        }
+        catch
+        {
+            Thread.Sleep(5000);
+        }
+    }
+}
 app.Run();
